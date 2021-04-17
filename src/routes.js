@@ -1,13 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
-import { MainLayout } from './modules/layouts/containers';
+import AuthRoutes from './modules/auth/routes';
 
-const Routes = () => {
+const Routes = () => (
   <BrowserRouter>
-    <MainLayout>
-      <Switch></Switch>
-    </MainLayout>
-  </BrowserRouter>;
-};
+    <Switch>{AuthRoutes}</Switch>
+  </BrowserRouter>
+);
 
 export default Routes;

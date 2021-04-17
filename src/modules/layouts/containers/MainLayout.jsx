@@ -1,7 +1,8 @@
 import React from 'react';
+import { MainLayout } from '../components';
 
-function MainLayout() {
-  <div>Main Layout containers</div>;
+function MainLayoutContainer() {
+  return <MainLayout />;
 }
 
-export default MainLayout;
+export default MainLayoutContainer;
