@@ -1,7 +1,7 @@
 import './App.css';
 import 'rsuite/dist/styles/rsuite-default.css';
 
-import { Header } from './modules/common/components';
+import { Header } from './modules/layouts/components';
 
 function App() {
   return (
