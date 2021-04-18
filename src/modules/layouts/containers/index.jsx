@@ -1,3 +1,3 @@
-import MainLayout from './MainLayout';
+import Header from './Header';
 
-export { MainLayout };
+export { Header };

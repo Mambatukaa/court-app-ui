@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { ApolloProvider } from 'react-apollo';
 import './index.css';
-import App from './App';
+import 'rsuite/dist/styles/rsuite-default.css';
 import apolloClient from './apolloClient';
+
+import Routes from './routes';
 
 ReactDOM.render(
   <ApolloProvider client={apolloClient}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <Routes />
   </ApolloProvider>,
   document.getElementById('root')
 );

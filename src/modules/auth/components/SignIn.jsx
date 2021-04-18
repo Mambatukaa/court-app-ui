@@ -8,6 +8,8 @@ import {
   Button
 } from 'rsuite';
 
+import { Link } from 'react-router-dom';
+
 function SignIn() {
   function TextField(props) {
     const { name, label, accepter, ...rest } = props;
@@ -32,6 +34,11 @@ function SignIn() {
         <ButtonToolbar>
           <Button appearance='primary' type='submit'>
             Нэвтрэх
+          </Button>
+          <Button appearance='primary' type='submit' color='red'>
+            <Link style={{ color: 'white' }} to='sign-up'>
+              Бүртгүүлэх
+            </Link>
           </Button>
         </ButtonToolbar>
       </Form>

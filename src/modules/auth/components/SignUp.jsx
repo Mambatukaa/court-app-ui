@@ -27,7 +27,7 @@ function SignUp() {
         <TextField name='password' label='Password' type='password' />
         <ButtonToolbar>
           <Button appearance='primary' type='submit'>
-            Нэвтрэх
+            Бүртгүүлэх
           </Button>
         </ButtonToolbar>
       </Form>
