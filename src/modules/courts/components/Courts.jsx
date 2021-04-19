@@ -1,7 +1,6 @@
 import React from 'react';
 import { List, FlexboxGrid, Icon, IconButton } from 'rsuite';
 import { CourtForm } from '../containers';
-import EditIcon from '@rsuite/icons/Edit';
 
 const styleCenter = {
   display: 'flex',
@@ -24,10 +23,11 @@ const titleStyle = {
 };
 
 function Courts(props) {
-  const { allCourts, history } = props;
+  const { allCourts } = props;
 
   return (
     <List hover>
+      <div style={{ textAlign: 'right', margin: 20 }}>{<CourtForm />}</div>
       {allCourts.map((item, index) => {
         return (
           <List.Item key={index} style={{ margin: 20 }}>
@@ -62,9 +62,7 @@ function Courts(props) {
                   ...styleCenter
                 }}
               >
-                <div style={{}}>
-                  <CourtForm />
-                </div>
+                {/*  <div style={{}}>{<CourtForm court={item} />}</div> */}
               </FlexboxGrid.Item>
             </FlexboxGrid>
           </List.Item>
