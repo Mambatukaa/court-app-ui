@@ -2,20 +2,23 @@ import React, { useState } from 'react';
 import { gql, graphql, compose } from 'react-apollo';
 import { SignUp } from '../components';
 import { mutations } from '../graphql';
+import { alert } from '../../common/utils';
 
 function SignUpContainer(props) {
   const [loading, setLoading] = useState(false);
-  const { signUpMutation } = props;
+  const { signUpMutation, history } = props;
 
   const signUp = variables => {
     setLoading(true);
 
     signUpMutation({ variables })
-      .then(({ data }) => {
-        console.log(data);
+      .then(() => {
+        alert.success('Бүртгэл амжилттай');
+        setLoading(false);
+        history.push('/sign-in');
       })
       .catch(e => {
-        console.log(e);
+        alert.error(e);
         setLoading(false);
       });
   };

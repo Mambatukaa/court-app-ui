@@ -15,41 +15,48 @@ function SignUp(props) {
     password: ''
   });
 
+  const { loading, signUp, history } = props;
+
   const handleSignUp = e => {
     e.preventDefault();
 
-    props.signUp({
-      username: 'hello',
-      email: 'boldoo@gmail.com',
-      password: 'world'
-    });
-  };
-
-  const TextField = props => {
-    const { name, label, accepter, ...rest } = props;
-    return (
-      <FormGroup>
-        <ControlLabel>{label} </ControlLabel>
-        <FormControl name={name} accepter={accepter} {...rest} />
-      </FormGroup>
-    );
+    signUp(formValue);
   };
 
   return (
-    <div style={{ textAlign: 'left', margin: 20 }}>
-      <Form
-        formValue={formValue}
-        onChange={e => {
-          setFormValue(e);
-        }}
-      >
-        <TextField name='username' label='Нэвтрэх нэр' />
-        <TextField name='email' label='Имэйл' />
-        <TextField name='password' label='Нууц үг' type='password' />
+    <div style={{ textAlign: 'center', margin: 20 }}>
+      <Form formValue={formValue} onChange={setFormValue}>
+        <FormGroup>
+          <ControlLabel>Нэвтрэх нэр</ControlLabel>
+          <FormControl name='username' placeholder='Нэвтрэх нэр' />
+        </FormGroup>
+
+        <FormGroup>
+          <ControlLabel>Имэйл</ControlLabel>
+          <FormControl name='email' placeholder='Имэйл' />
+        </FormGroup>
+
+        <FormGroup>
+          <ControlLabel>Нууц үг</ControlLabel>
+          <FormControl
+            name='password'
+            type='password'
+            placeholder='Нууц үг'
+            res
+          />
+        </FormGroup>
+
         <ButtonToolbar>
-          <Button appearance='primary' type='submit' onClick={handleSignUp}>
+          <Button
+            appearance='primary'
+            color='red'
+            type='submit'
+            loading={loading}
+            onClick={handleSignUp}
+          >
             Бүртгүүлэх
           </Button>
+          <Button onClick={() => history.goBack()}>Нэвтрэх</Button>
         </ButtonToolbar>
       </Form>
     </div>

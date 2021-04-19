@@ -1,18 +1,6 @@
 import React from 'react';
 import { List, FlexboxGrid, Icon } from 'rsuite';
 
-const data = [
-  {
-    title: 'Монгол Улсын Их Сургууль',
-    icon: 'image',
-    creator: 'Муис'
-  },
-  {
-    title: 'Celebration of the Mid-Autumn festival',
-    icon: 'image',
-    creator: 'Daibiao'
-  }
-];
 const styleCenter = {
   display: 'flex',
   justifyContent: 'center',
@@ -33,17 +21,19 @@ const titleStyle = {
   fontWeight: 500
 };
 
-function Courts() {
+function Courts(props) {
+  const { allCourts } = props;
+
   return (
     <List hover>
-      {data.map((item, index) => (
-        <List.Item key={item['title']} index={index}>
+      {allCourts.map((item, index) => (
+        <List.Item key={item['title']} index={index} style={{ margin: 15 }}>
           <FlexboxGrid>
             <FlexboxGrid.Item colspan={2} style={styleCenter}>
               <img
                 style={{ width: 100, borderRadius: 10 }}
                 alt='zurag'
-                src='https://www.nba.com/resources/static/team/v2/heat/custom-projects/2018-19_Uniforms/imgs/vice-nights-court-1.jpg'
+                src={item.image}
               />
             </FlexboxGrid.Item>
             <FlexboxGrid.Item
@@ -55,11 +45,11 @@ function Courts() {
                 overflow: 'hidden'
               }}
             >
-              <div style={titleStyle}>{item['title']}</div>
+              <div style={titleStyle}>{item['name']}</div>
               <div style={slimText}>
                 <div>
                   <Icon icon='user-circle-o' />
-                  {' ' + item['creator']}
+                  {' ' + item['owner']}
                 </div>
               </div>
             </FlexboxGrid.Item>

@@ -3,34 +3,28 @@ import { Nav, Icon, Navbar } from 'rsuite';
 import { Link } from 'react-router-dom';
 
 const NavBarInstance = ({ onSelect, activeKey, ...props }) => {
-  const { currentUser } = props;
-
-  console.log(currentUser);
+  const { currentUser, logout } = props;
 
   return (
     <Navbar {...props}>
       <Navbar.Body>
-        <Nav onSelect={onSelect} activeKey={activeKey}>
-          <Nav.Item icon={<Icon icon='home' />}>
-            <Link style={{ color: 'white' }} to='/'>
-              Заал
-            </Link>
-          </Nav.Item>
-        </Nav>
+        {currentUser ? (
+          <Nav onSelect={onSelect} activeKey={activeKey}>
+            <Nav.Item icon={<Icon icon='home' />}>
+              <Link style={{ color: 'white' }} to='/'>
+                Заал
+              </Link>
+            </Nav.Item>
+          </Nav>
+        ) : null}
         <Nav pullRight>
           {currentUser ? (
             <Nav.Item eventKey='logOut' icon={<Icon icon='sign-out' />}>
-              <Link style={{ color: 'white' }} to='/sign-out'>
+              <Link style={{ color: 'white' }} to='#sign-out' onClick={logout}>
                 Гарах
               </Link>
             </Nav.Item>
-          ) : (
-            <Nav.Item icon={<Icon icon='sign-in' />}>
-              <Link style={{ color: 'white' }} to='/sign-in'>
-                Нэвтрэх
-              </Link>
-            </Nav.Item>
-          )}
+          ) : null}
         </Nav>
       </Navbar.Body>
     </Navbar>
@@ -47,6 +41,7 @@ function Header(props) {
   return (
     <div className='nav-wrapper'>
       <NavBarInstance
+        logout={props.logout}
         currentUser={props.currentUser}
         appearance='inverse'
         activeKey={activeKey}

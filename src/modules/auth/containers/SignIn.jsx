@@ -1,14 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { gql, compose, graphql } from 'react-apollo';
 import { SignIn } from '../components';
-import { queries } from '../graphql';
+import { mutations } from '../graphql';
+
+import { alert } from '../../common/utils';
 
 function SignInContainer(props) {
-  return <SignIn />;
+  const [loading, setLoading] = useState(false);
+  const { loginMutation, history } = props;
+
+  function login(variables) {
+    setLoading(true);
+
+    loginMutation({ variables })
+      .then(() => {
+        alert.success('Амжилттай нэвтэрлээ');
+        history.push('/');
+      })
+      .catch(e => {
+        alert.error(e);
+        setLoading(false);
+      });
+  }
+
+  const updatedProps = {
+    ...props,
+    login,
+    loading
+  };
+
+  return <SignIn {...updatedProps} />;
 }
 
 export default compose(
-  graphql(gql(queries.allCourts), {
-    name: 'allCourtsQuery'
+  graphql(gql(mutations.login), {
+    name: 'loginMutation',
+    options: () => ({
+      refetchQueries: ['currentUser']
+    })
   })
 )(SignInContainer);

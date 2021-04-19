@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   FormGroup,
   FormControl,
@@ -10,35 +10,52 @@ import {
 
 import { Link } from 'react-router-dom';
 
-function SignIn() {
-  function TextField(props) {
-    const { name, label, accepter, ...rest } = props;
-    return (
-      <FormGroup>
-        <ControlLabel>{label} </ControlLabel>
-        <FormControl name={name} accepter={accepter} {...rest} />
-      </FormGroup>
-    );
+function SignIn(props) {
+  const { loading, login, history } = props;
+  const [formValue, setFormValue] = useState({
+    input: '',
+    password: ''
+  });
+
+  function loginHandle(e) {
+    e.preventDefault();
+
+    login(formValue);
   }
 
   return (
-    <div style={{ textAlign: 'left', margin: 20 }}>
-      <Form>
-        <TextField name='name' label='Нэвтрэх нэр' placeholder='Нэвтрэх нэр' />
-        <TextField
-          name='password'
-          label='Нууц үг'
-          type='password'
-          placeholder='Нууц үг'
-        />
+    <div style={{ textAlign: 'center', margin: 20 }}>
+      <Form formValue={formValue} onChange={setFormValue}>
+        <FormGroup>
+          <ControlLabel>Нэвтрэх нэр</ControlLabel>
+          <FormControl name='input' placeholder='Нэвтрэх нэр' />
+        </FormGroup>
+
+        <FormGroup>
+          <ControlLabel>Нууц үг</ControlLabel>
+          <FormControl
+            name='password'
+            type='password'
+            res
+            placeholder='Нууц үг'
+          />
+        </FormGroup>
         <ButtonToolbar>
-          <Button appearance='primary' type='submit'>
+          <Button
+            appearance='primary'
+            type='submit'
+            loading={loading}
+            onClick={loginHandle}
+          >
             Нэвтрэх
           </Button>
-          <Button appearance='primary' type='submit' color='red'>
-            <Link style={{ color: 'white' }} to='sign-up'>
-              Бүртгүүлэх
-            </Link>
+          <Button
+            appearance='primary'
+            type='submit'
+            color='red'
+            onClick={() => history.push('/sign-up')}
+          >
+            Бүртгүүлэх
           </Button>
         </ButtonToolbar>
       </Form>
