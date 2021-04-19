@@ -16,8 +16,8 @@ const courtFields = `
 `;
 
 const allCourts = `
-  query allCourts{
-    allCourts{
+  query courts{
+    courts{
         ${courtFields}
     }
 }
@@ -35,8 +35,19 @@ const users = `
   }
 `;
 
+const currentUser = `
+  query currentUser{
+    currentUser{
+      _id
+      username
+      role
+    }
+  }
+`;
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   allCourts,
-  users
+  users,
+  currentUser
 };

@@ -6,17 +6,20 @@ import { queries } from '../graphql';
 import { Courts } from '../components';
 
 function CourtContainer(props) {
-  const { allCourtsQuery } = props;
+  const { allCourtsQuery, currentUserQuery } = props;
 
-  if (allCourtsQuery.loading) {
+  if (allCourtsQuery.loading || currentUserQuery.loading) {
     return <Loader backdrop content='loading...' vertical />;
   }
 
-  const { allCourts } = allCourtsQuery;
+  const allCourts = allCourtsQuery.courts || [];
+
+  const currentUser = currentUserQuery.currentUser || {};
 
   const updatedProps = {
     ...props,
-    allCourts
+    allCourts,
+    currentUser
   };
 
   return <Courts {...updatedProps} />;
@@ -25,5 +28,8 @@ function CourtContainer(props) {
 export default compose(
   graphql(gql(queries.allCourts), {
     name: 'allCourtsQuery'
+  }),
+  graphql(gql(queries.currentUser), {
+    name: 'currentUserQuery'
   })
 )(CourtContainer);

@@ -23,11 +23,13 @@ const titleStyle = {
 };
 
 function Courts(props) {
-  const { allCourts } = props;
+  const { allCourts, currentUser } = props;
 
   return (
     <List hover>
-      <div style={{ textAlign: 'right', margin: 20 }}>{<CourtForm />}</div>
+      {currentUser && currentUser.role === 'admin' ? (
+        <div style={{ textAlign: 'right', margin: 20 }}>{<CourtForm />}</div>
+      ) : null}
       {allCourts.map((item, index) => {
         return (
           <List.Item key={index} style={{ margin: 20 }}>
