@@ -1,5 +1,7 @@
 import React from 'react';
-import { List, FlexboxGrid, Icon } from 'rsuite';
+import { List, FlexboxGrid, Icon, IconButton } from 'rsuite';
+
+import EditIcon from '@rsuite/icons/Edit';
 
 const styleCenter = {
   display: 'flex',
@@ -22,50 +24,59 @@ const titleStyle = {
 };
 
 function Courts(props) {
-  const { allCourts } = props;
+  const { allCourts, history } = props;
 
   return (
     <List hover>
-      {allCourts.map((item, index) => (
-        <List.Item key={item['title']} index={index} style={{ margin: 15 }}>
-          <FlexboxGrid>
-            <FlexboxGrid.Item colspan={2} style={styleCenter}>
-              <img
-                style={{ width: 100, borderRadius: 10 }}
-                alt='zurag'
-                src={item.image}
-              />
-            </FlexboxGrid.Item>
-            <FlexboxGrid.Item
-              colspan={6}
-              style={{
-                ...styleCenter,
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                overflow: 'hidden'
-              }}
-            >
-              <div style={titleStyle}>{item['name']}</div>
-              <div style={slimText}>
-                <div>
-                  <Icon icon='user-circle-o' />
-                  {' ' + item['owner']}
+      {allCourts.map((item, index) => {
+        const onEdit = () => {
+          history.push(`/courtDetails/${item._id}`);
+        };
+        return (
+          <List.Item key={item['title']} index={index} style={{ margin: 20 }}>
+            <FlexboxGrid>
+              <FlexboxGrid.Item colspan={2} style={styleCenter}>
+                <img
+                  style={{ width: 100, borderRadius: 10 }}
+                  alt='zurag'
+                  src={item.image}
+                />
+              </FlexboxGrid.Item>
+              <FlexboxGrid.Item
+                colspan={6}
+                style={{
+                  ...styleCenter,
+                  flexDirection: 'column',
+                  alignItems: 'flex-start',
+                  overflow: 'hidden'
+                }}
+              >
+                <div style={titleStyle}>{item['name']}</div>
+                <div style={slimText}>
+                  <div>
+                    <Icon icon='user-circle-o' />
+                    {' ' + item['owner']}
+                  </div>
                 </div>
-              </div>
-            </FlexboxGrid.Item>
-            <FlexboxGrid.Item
-              colspan={4}
-              style={{
-                ...styleCenter
-              }}
-            >
-              <a href='#'>View</a>
-              <span style={{ padding: 5 }}>|</span>
-              <a href='#'>Edit</a>
-            </FlexboxGrid.Item>
-          </FlexboxGrid>
-        </List.Item>
-      ))}
+              </FlexboxGrid.Item>
+              <FlexboxGrid.Item
+                colspan={4}
+                style={{
+                  ...styleCenter
+                }}
+              >
+                <div style={{}}>
+                  <IconButton onClick={onEdit} icon={<EditIcon />}>
+                    Edit
+                  </IconButton>
+
+                  {/*   <IconButton icon='edit'>Add</IconButton> */}
+                </div>
+              </FlexboxGrid.Item>
+            </FlexboxGrid>
+          </List.Item>
+        );
+      })}
     </List>
   );
 }
