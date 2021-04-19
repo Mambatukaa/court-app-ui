@@ -1,6 +1,6 @@
 import React from 'react';
 import { List, FlexboxGrid, Icon, IconButton } from 'rsuite';
-
+import { CourtForm } from '../containers';
 import EditIcon from '@rsuite/icons/Edit';
 
 const styleCenter = {
@@ -29,11 +29,8 @@ function Courts(props) {
   return (
     <List hover>
       {allCourts.map((item, index) => {
-        const onEdit = () => {
-          history.push(`/courtDetails/${item._id}`);
-        };
         return (
-          <List.Item key={item['title']} index={index} style={{ margin: 20 }}>
+          <List.Item key={index} style={{ margin: 20 }}>
             <FlexboxGrid>
               <FlexboxGrid.Item colspan={2} style={styleCenter}>
                 <img
@@ -66,11 +63,7 @@ function Courts(props) {
                 }}
               >
                 <div style={{}}>
-                  <IconButton onClick={onEdit} icon={<EditIcon />}>
-                    Edit
-                  </IconButton>
-
-                  {/*   <IconButton icon='edit'>Add</IconButton> */}
+                  <CourtForm />
                 </div>
               </FlexboxGrid.Item>
             </FlexboxGrid>

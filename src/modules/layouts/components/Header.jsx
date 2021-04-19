@@ -17,13 +17,25 @@ const NavBarInstance = ({ onSelect, activeKey, ...props }) => {
             </Nav.Item>
           </Nav>
         ) : null}
+
         <Nav pullRight>
           {currentUser ? (
-            <Nav.Item eventKey='logOut' icon={<Icon icon='sign-out' />}>
-              <Link style={{ color: 'white' }} to='#sign-out' onClick={logout}>
+            <Nav.Item
+              eventKey='logOut'
+              to='/sign-in'
+              icon={<Icon icon='sign-out' />}
+            >
+              <Link style={{ color: 'white' }} onClick={logout}>
                 Гарах
               </Link>
             </Nav.Item>
+          ) : null}
+          {currentUser && currentUser.role === 'admin' ? (
+            <Nav pullRight>
+              <Nav.Item eventKey='logOut' icon={<Icon icon='plus-square' />}>
+                Заал нэмэх
+              </Nav.Item>
+            </Nav>
           ) : null}
         </Nav>
       </Navbar.Body>
