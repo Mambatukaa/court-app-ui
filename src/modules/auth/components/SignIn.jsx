@@ -8,8 +8,6 @@ import {
   Button
 } from 'rsuite';
 
-import { Link } from 'react-router-dom';
-
 function SignIn(props) {
   const { loading, login, history } = props;
   const [formValue, setFormValue] = useState({
