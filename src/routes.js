@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
-import { Header } from './modules/layouts/components';
+import { Header } from './modules/layouts/containers';
 import AuthRoutes from './modules/auth/routes';
 import CourtsRoutes from './modules/courts/routes';
 

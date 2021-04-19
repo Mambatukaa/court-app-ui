@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   FormGroup,
   FormControl,
@@ -8,8 +8,24 @@ import {
   Button
 } from 'rsuite';
 
-function SignUp() {
-  function TextField(props) {
+function SignUp(props) {
+  const [formValue, setFormValue] = useState({
+    username: '',
+    email: '',
+    password: ''
+  });
+
+  const handleSignUp = e => {
+    e.preventDefault();
+
+    props.signUp({
+      username: 'hello',
+      email: 'boldoo@gmail.com',
+      password: 'world'
+    });
+  };
+
+  const TextField = props => {
     const { name, label, accepter, ...rest } = props;
     return (
       <FormGroup>
@@ -17,16 +33,21 @@ function SignUp() {
         <FormControl name={name} accepter={accepter} {...rest} />
       </FormGroup>
     );
-  }
+  };
 
   return (
     <div style={{ textAlign: 'left', margin: 20 }}>
-      <Form>
-        <TextField name='name' label='Нэвтрэх нэр' />
-        <TextField name='email' label='email' />
-        <TextField name='password' label='Password' type='password' />
+      <Form
+        formValue={formValue}
+        onChange={e => {
+          setFormValue(e);
+        }}
+      >
+        <TextField name='username' label='Нэвтрэх нэр' />
+        <TextField name='email' label='Имэйл' />
+        <TextField name='password' label='Нууц үг' type='password' />
         <ButtonToolbar>
-          <Button appearance='primary' type='submit'>
+          <Button appearance='primary' type='submit' onClick={handleSignUp}>
             Бүртгүүлэх
           </Button>
         </ButtonToolbar>
