@@ -29,7 +29,17 @@ const NavBarInstance = ({ onSelect, activeKey, ...props }) => {
                 Гарах
               </Link>
             </Nav.Item>
-          ) : null}
+          ) : (
+            <Nav.Item
+              eventKey='logIn'
+              to='/sign-in'
+              icon={<Icon icon='sign-out' />}
+            >
+              <Link to='/sign-in' style={{ color: 'white' }}>
+                Нэвтрэх
+              </Link>
+            </Nav.Item>
+          )}
           {currentUser && currentUser.role === 'admin' ? (
             <Nav pullRight>
               <Nav.Item eventKey='logOut' icon={<Icon icon='plus-square' />}>
