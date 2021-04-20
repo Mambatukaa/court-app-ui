@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Button } from 'antd';
 import { List, FlexboxGrid, Icon } from 'rsuite';
 import CourtForm from './CourtForm';
+import CourtScheduleForm from './CourtScheduleForm';
 
 const styleCenter = {
   display: 'flex',
@@ -71,6 +72,7 @@ const CourtRow = props => {
             </div>
           </div>
         </FlexboxGrid.Item>
+
         <FlexboxGrid.Item
           colspan={4}
           style={{
@@ -83,7 +85,22 @@ const CourtRow = props => {
         </FlexboxGrid.Item>
 
         <FlexboxGrid.Item
-          colspan={11}
+          colspan={4}
+          style={{
+            ...styleCenter
+          }}
+        >
+          {
+            <CourtScheduleForm
+              court={court}
+              addSchedule={props.addSchedule}
+              loading={props.loading}
+            />
+          }
+        </FlexboxGrid.Item>
+
+        <FlexboxGrid.Item
+          colspan={4}
           style={{
             ...styleCenter
           }}

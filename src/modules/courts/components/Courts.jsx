@@ -15,7 +15,15 @@ function Courts(props) {
         </div>
       ) : null}
       {allCourts.map((item, index) => {
-        return <CourtRow court={item} index={index} remove={remove} />;
+        return (
+          <CourtRow
+            court={item}
+            index={index}
+            remove={remove}
+            addSchedule={props.addSchedule}
+            loading={props.loading}
+          />
+        );
       })}
     </List>
   );

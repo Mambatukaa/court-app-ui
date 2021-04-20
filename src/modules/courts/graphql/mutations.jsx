@@ -70,5 +70,28 @@ const removeCourt = `
     }
 `;
 
+const scheduleParamsDef = `
+    $courtId: String!
+    $startTime: Date!
+    $endTime: Date!
+`;
+
+const scheduleParamsVal = `
+    courtId: $courtId
+    startTime: $startTime
+    endTime: $endTime
+`;
+
+const schedulesAdd = `
+    mutation schedulesAdd(${scheduleParamsDef}){
+        schedulesAdd(${scheduleParamsVal}){
+            _id
+            courtId
+            startTime
+            endTime
+        }
+    }
+`;
+
 // eslint-disable-next-line import/no-anonymous-default-export
-export default { addCourt, removeCourt, courtEdit };
+export default { addCourt, removeCourt, courtEdit, schedulesAdd };
