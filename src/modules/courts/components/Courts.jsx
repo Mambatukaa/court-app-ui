@@ -10,7 +10,9 @@ function Courts(props) {
   return (
     <List hover>
       {currentUser && currentUser.role === 'admin' ? (
-        <div style={{ textAlign: 'right', margin: 20 }}>{<CourtForm />}</div>
+        <div style={{ textAlign: 'right', margin: 20 }}>
+          {<CourtForm btnTxt='Заал нэмэх' />}
+        </div>
       ) : null}
       {allCourts.map((item, index) => {
         return <CourtRow court={item} index={index} remove={remove} />;

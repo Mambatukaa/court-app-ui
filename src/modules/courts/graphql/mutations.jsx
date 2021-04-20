@@ -56,6 +56,14 @@ const addCourt = `
     }
 `;
 
+const courtEdit = `
+    mutation courtEdit( $_id: String! ${courtParamsDef}){
+        courtEdit( _id: $_id ${courtParamsVal}){
+            ${courtFields}
+        }
+    }
+`;
+
 const removeCourt = `
     mutation removeCourt($_id: String!){
         removeCourt(_id: $_id)
@@ -63,4 +71,4 @@ const removeCourt = `
 `;
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default { addCourt, removeCourt };
+export default { addCourt, removeCourt, courtEdit };

@@ -40,13 +40,6 @@ const NavBarInstance = ({ onSelect, activeKey, ...props }) => {
               </Link>
             </Nav.Item>
           )}
-          {currentUser && currentUser.role === 'admin' ? (
-            <Nav pullRight>
-              <Nav.Item eventKey='logOut' icon={<Icon icon='plus-square' />}>
-                Заал нэмэх
-              </Nav.Item>
-            </Nav>
-          ) : null}
         </Nav>
       </Navbar.Body>
     </Navbar>

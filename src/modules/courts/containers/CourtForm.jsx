@@ -8,7 +8,7 @@ import { alert } from '../../common/utils';
 
 const CourtFormContainer = props => {
   const [loading, setLoading] = useState(false);
-  const { usersQuery, addCourtMutation } = props;
+  const { usersQuery, addCourtMutation, courtEditMutation } = props;
 
   const addCourt = variables => {
     setLoading(true);
@@ -16,6 +16,19 @@ const CourtFormContainer = props => {
     addCourtMutation({ variables })
       .then(() => {
         alert.success('Амжилттай');
+      })
+      .catch(e => {
+        alert.error(e);
+        setLoading(false);
+      });
+  };
+
+  const editCourt = (_id, variables) => {
+    setLoading(true);
+
+    courtEditMutation(_id, variables)
+      .then(() => {
+        alert.success('Амжилттай засагдлаа');
       })
       .catch(e => {
         alert.error(e);
@@ -33,7 +46,8 @@ const CourtFormContainer = props => {
     ...props,
     allUsers,
     loading,
-    addCourt
+    addCourt,
+    editCourt
   };
 
   return <CourtForm {...updatedProps} />;
@@ -45,6 +59,12 @@ export default compose(
   }),
   graphql(gql(mutations.addCourt), {
     name: 'addCourtMutation',
+    options: () => ({
+      refetchQueries: ['courts']
+    })
+  }),
+  graphql(gql(mutations.courtEdit), {
+    name: 'courtEditMutation',
     options: () => ({
       refetchQueries: ['courts']
     })

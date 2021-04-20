@@ -1,38 +1,36 @@
 import React, { useState } from 'react';
-import { Button, Modal, Select } from 'antd';
-import {
-  Form,
-  FormGroup,
-  ControlLabel,
-  FormControl,
-  SelectPicker
-} from 'rsuite';
+import { Button, Modal } from 'antd';
+import { Form, FormGroup, ControlLabel, FormControl } from 'rsuite';
 import { PlusCircleOutlined } from '@ant-design/icons';
 
 const CourtForm = props => {
+  const court = props.court || {};
+
   const [data, setData] = useState({
-    name: '',
-    shortName: '',
-    image: '',
-    price: '',
-    description: '',
-    warning: '',
-    parking: '',
-    courtDetail: '',
+    name: court.name || '',
+    shortName: court.shortName || '',
+    image: court.image || '',
+    price: court.price || '',
+    description: court.description || '',
+    warning: court.warning || '',
+    parking: court.parking || '',
+    courtDetail: court.courtDetail || '',
     lat: '',
     lng: '',
-    ownerId: ''
+    ownerId: court.ownerId || ''
   });
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const { addCourt } = props;
+  const { addCourt, editCourt } = props;
 
   const showModal = () => {
     setIsModalVisible(true);
   };
 
   const handleOk = e => {
+    e.preventDefault();
+
     addCourt(data);
 
     setIsModalVisible(false);
@@ -42,13 +40,10 @@ const CourtForm = props => {
     setIsModalVisible(false);
   };
 
-  const { allUsers } = props;
-  const { Option } = Select;
-
   return (
     <>
       <Button type='primary' icon={<PlusCircleOutlined />} onClick={showModal}>
-        Заал нэмэх
+        {props.btnTxt}
       </Button>
       <Modal
         title='Заалын мэдээлэл'

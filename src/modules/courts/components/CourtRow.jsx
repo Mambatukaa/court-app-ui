@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Button } from 'antd';
 import { List, FlexboxGrid, Icon } from 'rsuite';
+import CourtForm from './CourtForm';
 
 const styleCenter = {
   display: 'flex',
@@ -76,7 +77,9 @@ const CourtRow = props => {
             ...styleCenter
           }}
         >
-          {/*  <div style={{}}>{<CourtForm court={item} />}</div> */}
+          <div style={{ textAlign: 'right', margin: 20 }}>
+            {<CourtForm court={court} btnTxt={'Засах'} />}
+          </div>
         </FlexboxGrid.Item>
 
         <FlexboxGrid.Item
