@@ -56,5 +56,11 @@ const addCourt = `
     }
 `;
 
+const removeCourt = `
+    mutation removeCourt($_id: String!){
+        removeCourt(_id: $_id)
+    }
+`;
+
 // eslint-disable-next-line import/no-anonymous-default-export
-export default { addCourt };
+export default { addCourt, removeCourt };

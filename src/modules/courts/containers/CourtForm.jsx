@@ -46,7 +46,7 @@ export default compose(
   graphql(gql(mutations.addCourt), {
     name: 'addCourtMutation',
     options: () => ({
-      refetchQueries: ['allCourts']
+      refetchQueries: ['courts']
     })
   })
 )(CourtFormContainer);

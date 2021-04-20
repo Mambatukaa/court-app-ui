@@ -33,8 +33,6 @@ const CourtForm = props => {
   };
 
   const handleOk = e => {
-    e.preventDefault();
-
     addCourt(data);
 
     setIsModalVisible(false);
