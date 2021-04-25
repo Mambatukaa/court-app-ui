@@ -10,7 +10,7 @@ const CourtForm = props => {
     name: court.name || '',
     shortName: court.shortName || '',
     image: court.image || '',
-    price: court.price || '',
+    slotSize: court.slotSize || '',
     description: court.description || '',
     warning: court.warning || '',
     parking: court.parking || '',
@@ -85,14 +85,14 @@ const CourtForm = props => {
               <ControlLabel>Нэр</ControlLabel>
               <FormControl name='name' value={data.name} />
             </FormGroup>
-            <FormGroup>
+            {/*   <FormGroup>
               <ControlLabel>Богино нэр</ControlLabel>
               <FormControl name='shortName' value={data.shortName} />
-            </FormGroup>
+            </FormGroup> */}
 
             <FormGroup>
-              <ControlLabel>Үнэ</ControlLabel>
-              <FormControl name='price' value={data.price} />
+              <ControlLabel>Хүний хэмжээ</ControlLabel>
+              <FormControl name='slotSize' value={data.slotSize} />
             </FormGroup>
 
             <FormGroup>

@@ -35,7 +35,6 @@ function CourtContainer(props) {
   const addSchedule = variables => {
     scheduleAddMutation({ variables })
       .then(() => {
-        setLoading(true);
         alert.success('Амжилттай нэмэгдлээ');
       })
       .catch(e => {

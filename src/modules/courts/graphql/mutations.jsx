@@ -2,10 +2,8 @@ const courtFields = `
     _id
 
     name
-    shortName
     image
-
-    price
+    slotSize
     description
 
     warning
@@ -16,11 +14,10 @@ const courtFields = `
 
 const courtParamsDef = `
     $name: String
-    $shortName: String
     $image: String
 
-    $price: String
     $description: String
+    $slotSize: Float
 
     $warning: String
     $parking: String
@@ -33,11 +30,11 @@ const courtParamsDef = `
 
 const courtParamsVal = `
     name: $name
-    shortName: $shortName
     image: $image
 
-    price: $price
     description: $description
+    slotSize: $slotSize
+
     warning: $warning
     parking: $parking
 
@@ -72,14 +69,18 @@ const removeCourt = `
 
 const scheduleParamsDef = `
     $courtId: String!
+    $day: Date!
     $startTime: Date!
     $endTime: Date!
+    $price: String
 `;
 
 const scheduleParamsVal = `
     courtId: $courtId
+    day: $day
     startTime: $startTime
     endTime: $endTime
+    price: $price
 `;
 
 const schedulesAdd = `
@@ -89,6 +90,7 @@ const schedulesAdd = `
             courtId
             startTime
             endTime
+            price
         }
     }
 `;

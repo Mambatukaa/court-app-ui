@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Modal, DatePicker, Form } from 'antd';
+import { Button, Modal, DatePicker, Form, Input, TimePicker } from 'antd';
 import { PlusCircleOutlined } from '@ant-design/icons';
 import moment from 'moment';
 
@@ -19,18 +19,20 @@ const CourtSchedule = props => {
   };
 
   const onFinish = values => {
-    const { time } = values;
+    const { startTime, endTime, price, day } = values;
 
     addSchedule({
       courtId: court._id,
-      startTime: time[0],
-      endTime: time[1]
+      startTime: startTime,
+      endTime: endTime,
+      day,
+      price
     });
 
     setIsModalVisible(false);
   };
 
-  const { RangePicker } = DatePicker;
+  //const { RangePicker } = DatePicker;
 
   return (
     <>
@@ -60,8 +62,9 @@ const CourtSchedule = props => {
             <DatePicker picker='day' />
           </Form.Item> */}
 
-          <Form.Item label='Эхлэх цаг' name='time'>
-            <RangePicker
+          <Form.Item label='Өдөр' name='day'>
+            <DatePicker name='day' />
+            {/*  <RangePicker
               showTime={{
                 hideDisabledOptions: true,
                 defaultValue: [
@@ -70,13 +73,21 @@ const CourtSchedule = props => {
                 ]
               }}
               format='YYYY-MM-DD HH:mm'
-            />
+            /> */}
           </Form.Item>
 
-          {/*    <Form.Item label='Дуусах цаг' name='endTime'>
-            <TimePicker picker='hour' format={timeFormat} />
+          <Form.Item label='Эхлэх цаг' name='startTime'>
+            <TimePicker format={'HH:mm'} />
           </Form.Item>
- */}
+
+          <Form.Item label='Дуусах цаг' name='endTime'>
+            <TimePicker format={'HH:mm'} />
+          </Form.Item>
+
+          <Form.Item label='Үнэ' name='price'>
+            <Input type='number' style={{ width: 134 }} />
+          </Form.Item>
+
           <Form.Item>
             <Button type='primary' htmlType='submit' loading={loading}>
               Submit

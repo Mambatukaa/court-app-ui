@@ -2,9 +2,8 @@ const courtFields = `
     _id
     createdAt
     name
-    shortName
-    price
     description
+    slotSize
     warning
     parking
     courtDetail
