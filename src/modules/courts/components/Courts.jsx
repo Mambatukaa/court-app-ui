@@ -20,7 +20,6 @@ function Courts(props) {
             court={item}
             index={index}
             remove={remove}
-            addSchedule={props.addSchedule}
             loading={props.loading}
             history={history}
           />

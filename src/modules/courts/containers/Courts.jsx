@@ -9,12 +9,7 @@ import { alert } from '../../common/utils';
 function CourtContainer(props) {
   const [loading, setLoading] = useState(false);
 
-  const {
-    allCourtsQuery,
-    currentUserQuery,
-    removeCourtMutation,
-    scheduleAddMutation
-  } = props;
+  const { allCourtsQuery, currentUserQuery, removeCourtMutation } = props;
 
   if (allCourtsQuery.loading || currentUserQuery.loading) {
     return <Loader backdrop content='loading...' vertical />;
@@ -32,17 +27,6 @@ function CourtContainer(props) {
       });
   };
 
-  const addSchedule = variables => {
-    scheduleAddMutation({ variables })
-      .then(() => {
-        alert.success('Амжилттай нэмэгдлээ');
-      })
-      .catch(e => {
-        alert.error(e);
-        setLoading(false);
-      });
-  };
-
   const allCourts = allCourtsQuery.courts || [];
 
   const currentUser = currentUserQuery.currentUser || {};
@@ -52,8 +36,7 @@ function CourtContainer(props) {
     allCourts,
     currentUser,
     remove,
-    loading,
-    addSchedule
+    loading
   };
 
   return <Courts {...updatedProps} />;
@@ -71,8 +54,5 @@ export default compose(
     options: () => ({
       refetchQueries: ['courts']
     })
-  }),
-  graphql(gql(mutations.schedulesAdd), {
-    name: 'scheduleAddMutation'
   })
 )(CourtContainer);

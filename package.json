@@ -12,6 +12,7 @@
     "apollo-link": "1.0.7",
     "apollo-link-error": "1.0.9",
     "apollo-link-http": "1.5.4",
+    "dayjs": "^1.10.4",
     "erxes-ui": "^0.0.48",
     "graphql": "0.11.7",
     "graphql-tag": "2.5.0",

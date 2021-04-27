@@ -8,7 +8,18 @@ import { alert } from '../../common/utils';
 
 const CourtFormContainer = props => {
   const [loading, setLoading] = useState(false);
-  const { usersQuery, addCourtMutation, courtEditMutation } = props;
+  const {
+    usersQuery,
+    addCourtMutation,
+    courtEditMutation,
+    currentUserQuery
+  } = props;
+
+  if (currentUserQuery.loading) {
+    return null;
+  }
+
+  const currentUser = currentUserQuery.currentUser || {};
 
   const addCourt = variables => {
     setLoading(true);
@@ -49,7 +60,8 @@ const CourtFormContainer = props => {
     allUsers,
     loading,
     addCourt,
-    editCourt
+    editCourt,
+    currentUser
   };
 
   return <CourtForm {...updatedProps} />;
@@ -58,6 +70,9 @@ const CourtFormContainer = props => {
 export default compose(
   graphql(gql(queries.users), {
     name: 'usersQuery'
+  }),
+  graphql(gql(queries.currentUser), {
+    name: 'currentUserQuery'
   }),
   graphql(gql(mutations.addCourt), {
     name: 'addCourtMutation',

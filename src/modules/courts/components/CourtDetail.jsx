@@ -1,33 +1,60 @@
-import React from 'react';
-import { List, Avatar } from 'antd';
+import React, { useState } from 'react';
+import { List, Modal, Button } from 'antd';
+import dayjs from 'dayjs';
 
-const data = [
-  {
-    title: 'Ant Design Title 1'
-  },
-  {
-    title: 'Ant Design Title 2'
-  },
-  {
-    title: 'Ant Design Title 3'
-  },
-  {
-    title: 'Ant Design Title 4'
-  }
-];
+import CourtScheduleForm from './CourtScheduleForm';
 
-const CourtDetail = () => {
+const CourtDetail = props => {
+  const { courtDetail, addSchedule, deleteSchedule } = props;
+  const { courtSchedule } = courtDetail;
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = item => {
+    deleteSchedule(item);
+
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
   return (
     <div style={{ margin: 20 }}>
+      {<CourtScheduleForm court={courtDetail} addSchedule={addSchedule} />}
       <List
         itemLayout='horizontal'
-        dataSource={data}
+        dataSource={courtSchedule}
         renderItem={item => (
-          <List.Item>
+          <List.Item
+            style={{ border: 'solid', borderWidth: 0.6, padding: 5, margin: 5 }}
+          >
             <List.Item.Meta
-              title={<a href='https://ant.design'>{item.title}</a>}
-              description='Ant Design, a design language for background applications, is refined by Ant UED Team'
+              title={<h6>{dayjs(item.day).format('YYYY-MM-DD')}</h6>}
+              description={`${dayjs(item.startTime).format(
+                'HH:mm'
+              )} ==> ${dayjs(item.endTime).format('HH:mm')}\n ${item.price}₮`}
             />
+            <div>
+              <Button type='primary' onClick={showModal}>
+                Устгах
+              </Button>
+              <Modal
+                title='Цагийн хуваарь устгах'
+                visible={isModalVisible}
+                onOk={() => {
+                  handleOk(item);
+                }}
+                onCancel={handleCancel}
+              >
+                <p>Устгахдаа итгэлтэй байна уу?</p>
+              </Modal>
+            </div>
           </List.Item>
         )}
       />

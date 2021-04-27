@@ -101,5 +101,17 @@ const schedulesAdd = `
     }
 `;
 
+const schedulesDelete = `
+    mutation schedulesDelete($_id: String!){
+        schedulesDelete(_id: $_id)
+    }
+`;
+
 // eslint-disable-next-line import/no-anonymous-default-export
-export default { addCourt, removeCourt, courtEdit, schedulesAdd };
+export default {
+  addCourt,
+  removeCourt,
+  courtEdit,
+  schedulesAdd,
+  schedulesDelete
+};

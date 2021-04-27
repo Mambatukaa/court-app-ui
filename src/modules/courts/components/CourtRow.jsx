@@ -89,22 +89,6 @@ const CourtRow = props => {
             {<CourtForm court={court} btnTxt={'Засах'} />}
           </div>
         </FlexboxGrid.Item>
-
-        <FlexboxGrid.Item
-          colspan={4}
-          style={{
-            ...styleCenter
-          }}
-        >
-          {
-            <CourtScheduleForm
-              court={court}
-              addSchedule={props.addSchedule}
-              loading={props.loading}
-            />
-          }
-        </FlexboxGrid.Item>
-
         <FlexboxGrid.Item
           colspan={4}
           style={{

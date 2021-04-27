@@ -23,7 +23,7 @@ const CourtForm = props => {
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const { addCourt, editCourt, allUsers = [] } = props;
+  const { addCourt, editCourt, allUsers = [], currentUser } = props;
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -77,17 +77,19 @@ const CourtForm = props => {
           }}
           layout='horizontal'
         >
-          <Form.Item
-            label='Заалны менежер'
-            name='ownerId'
-            initialValue={data.ownerId}
-          >
-            <Select style={{ width: 150 }}>
-              {allUsers.map(el => {
-                return <Option value={el._id}>{el.username}</Option>;
-              })}
-            </Select>
-          </Form.Item>
+          {currentUser?.role === 'admin' ? (
+            <Form.Item
+              label='Заалны менежер'
+              name='ownerId'
+              initialValue={data.ownerId}
+            >
+              <Select style={{ width: 150 }}>
+                {allUsers.map(el => {
+                  return <Option value={el._id}>{el.username}</Option>;
+                })}
+              </Select>
+            </Form.Item>
+          ) : null}
 
           <Form.Item label='Нэр' name='name' initialValue={data.name}>
             <Input required />
