@@ -5,7 +5,7 @@ import { CourtForm } from '../containers';
 import { CourtRow } from '../components';
 
 function Courts(props) {
-  const { allCourts, currentUser, remove } = props;
+  const { allCourts, currentUser, remove, history } = props;
 
   return (
     <List hover>
@@ -22,6 +22,7 @@ function Courts(props) {
             remove={remove}
             addSchedule={props.addSchedule}
             loading={props.loading}
+            history={history}
           />
         );
       })}

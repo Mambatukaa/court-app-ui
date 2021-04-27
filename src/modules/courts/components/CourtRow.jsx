@@ -27,7 +27,7 @@ const titleStyle = {
 const CourtRow = props => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const { court, remove } = props;
+  const { court, remove, history } = props;
 
   const item = court;
 
@@ -48,7 +48,13 @@ const CourtRow = props => {
   return (
     <List.Item style={{ margin: 20 }}>
       <FlexboxGrid>
-        <FlexboxGrid.Item colspan={2} style={styleCenter}>
+        <FlexboxGrid.Item
+          colspan={2}
+          style={styleCenter}
+          onClick={() => {
+            history.push(`/courtDetails/${court._id}`);
+          }}
+        >
           <img
             style={{ width: 100, borderRadius: 10 }}
             alt='zurag'

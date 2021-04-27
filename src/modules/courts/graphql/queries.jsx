@@ -13,6 +13,17 @@ const courtFields = `
         lng
       }
     ownerId
+
+    courtSchedule {
+      _id
+      day
+      courtId
+      startTime
+      endTime
+      price
+      bookedPeople
+    }
+    
 `;
 
 const allCourts = `
@@ -45,9 +56,18 @@ const currentUser = `
   }
 `;
 
+const courtDetail = `
+  query courtDetail($_id: String!){
+    courtDetail(_id: $_id){
+      ${courtFields}
+    }
+  }
+`;
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   allCourts,
   users,
-  currentUser
+  currentUser,
+  courtDetail
 };
