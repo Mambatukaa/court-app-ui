@@ -19,20 +19,20 @@ const CourtSchedule = props => {
   };
 
   const onFinish = values => {
-    const { startTime, endTime, price, day } = values;
+    const { price, date, day } = values;
 
     addSchedule({
       courtId: court._id,
-      startTime: startTime,
-      endTime: endTime,
       day,
+      startTime: date[0],
+      endTime: date[1],
       price
     });
 
     setIsModalVisible(false);
   };
 
-  //const { RangePicker } = DatePicker;
+  const { RangePicker } = DatePicker;
 
   return (
     <>
@@ -58,13 +58,13 @@ const CourtSchedule = props => {
           }}
           layout='horizontal'
         >
-          {/*  <Form.Item label='Өдөр' name='day'>
-            <DatePicker picker='day' />
-          </Form.Item> */}
-
           <Form.Item label='Өдөр' name='day'>
-            <DatePicker name='day' />
-            {/*  <RangePicker
+            <DatePicker picker='day' />
+          </Form.Item>
+
+          {/*  <Form.Item label='Өдөр' name='day'>
+            <DatePicker name='day' /> */}
+          {/*  <RangePicker
               showTime={{
                 hideDisabledOptions: true,
                 defaultValue: [
@@ -74,14 +74,21 @@ const CourtSchedule = props => {
               }}
               format='YYYY-MM-DD HH:mm'
             /> */}
-          </Form.Item>
+          {/*  </Form.Item> */}
 
-          <Form.Item label='Эхлэх цаг' name='startTime'>
+          {/*     <Form.Item label='Эхлэх цаг' name='startTime'>
             <TimePicker format={'HH:mm'} />
           </Form.Item>
 
           <Form.Item label='Дуусах цаг' name='endTime'>
             <TimePicker format={'HH:mm'} />
+          </Form.Item> */}
+
+          <Form.Item label='Хугацаа' name='date'>
+            <RangePicker
+              showTime={{ format: 'HH:mm' }}
+              format='YYYY-MM-DD HH:mm'
+            />
           </Form.Item>
 
           <Form.Item label='Үнэ' name='price'>
