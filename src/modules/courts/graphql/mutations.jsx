@@ -10,6 +10,8 @@ const courtFields = `
     parking
     courtDetail
 
+    ownerId
+
 `;
 
 const courtParamsDef = `
@@ -25,6 +27,8 @@ const courtParamsDef = `
 
     $lat: String
     $lng: String
+
+    $ownerId: String
 
 `;
 
@@ -42,6 +46,8 @@ const courtParamsVal = `
 
     lat: $lat
     lng: $lng
+
+    ownerId: $ownerId
 
 `;
 

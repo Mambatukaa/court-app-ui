@@ -12,6 +12,7 @@ const courtFields = `
         lat
         lng
       }
+    ownerId
 `;
 
 const allCourts = `

@@ -16,6 +16,7 @@ const CourtFormContainer = props => {
     addCourtMutation({ variables })
       .then(() => {
         alert.success('Амжилттай');
+        setLoading(false);
       })
       .catch(e => {
         alert.error(e);
@@ -26,9 +27,10 @@ const CourtFormContainer = props => {
   const editCourt = (_id, variables) => {
     setLoading(true);
 
-    courtEditMutation(_id, variables)
+    courtEditMutation({ _id, variables })
       .then(() => {
         alert.success('Амжилттай засагдлаа');
+        setLoading(false);
       })
       .catch(e => {
         alert.error(e);
@@ -40,7 +42,7 @@ const CourtFormContainer = props => {
     return null;
   }
 
-  const { allUsers } = usersQuery;
+  const allUsers = usersQuery.allUsers || [];
 
   const updatedProps = {
     ...props,

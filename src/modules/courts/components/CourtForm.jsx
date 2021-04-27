@@ -1,28 +1,29 @@
 import React, { useState } from 'react';
-import { Button, Modal } from 'antd';
-import { Form, FormGroup, ControlLabel, FormControl } from 'rsuite';
+import { Button, Modal, Form, Input, Select, InputNumber } from 'antd';
+
 import { PlusCircleOutlined } from '@ant-design/icons';
 
 const CourtForm = props => {
+  const [form] = Form.useForm();
+
   const court = props.court || {};
 
   const [data, setData] = useState({
     name: court.name || '',
-    shortName: court.shortName || '',
+    ownerId: '',
     image: court.image || '',
-    slotSize: court.slotSize || '',
+    slotSize: court.slotSize || 15,
     description: court.description || '',
     warning: court.warning || '',
     parking: court.parking || '',
     courtDetail: court.courtDetail || '',
     lat: '',
-    lng: '',
-    ownerId: court.ownerId || ''
+    lng: ''
   });
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const { addCourt, editCourt } = props;
+  const { addCourt, editCourt, allUsers = [] } = props;
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -40,21 +41,34 @@ const CourtForm = props => {
     setIsModalVisible(false);
   };
 
+  /* const onEdit = values => {
+    editCourt(court._id, values);
+  }; */
+
+  const onFinish = values => {
+    addCourt(values);
+
+    setIsModalVisible(false);
+  };
+
+  const { Option } = Select;
   return (
     <>
       <Button type='primary' icon={<PlusCircleOutlined />} onClick={showModal}>
         {props.btnTxt}
       </Button>
       <Modal
-        title='Заалын мэдээлэл'
+        title='Заал нэмэх'
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
         width={800}
+        footer={false}
       >
         <Form
-          initialValues={data}
-          onValuesChange={setData}
+          form={form}
+          name='control-hooks'
+          onFinish={onFinish}
           labelCol={{
             span: 4
           }}
@@ -63,74 +77,75 @@ const CourtForm = props => {
           }}
           layout='horizontal'
         >
-          <Form layout='horizontal' formValue={data} onChange={setData}>
-            <FormGroup>
-              <ControlLabel>Менежер</ControlLabel>
-              {/*  <Select
-                showSearch
-                style={{ width: 224 }}
-                placeholder='Менежер сонгох'
-                optionFilterProp='children'
-                filterOption={(input, option) =>
-                  option.children.toLowerCase().indexOf(input.toLowerCase()) >=
-                  0
-                }
-              >
-                {allUsers.map(user => {
-                  return <Option value={data.ownerId}>{user.username}</Option>;
-                })}
-              </Select> */}
-            </FormGroup>
-            <FormGroup>
-              <ControlLabel>Нэр</ControlLabel>
-              <FormControl name='name' value={data.name} />
-            </FormGroup>
-            {/*   <FormGroup>
-              <ControlLabel>Богино нэр</ControlLabel>
-              <FormControl name='shortName' value={data.shortName} />
-            </FormGroup> */}
+          <Form.Item
+            label='Заалны менежер'
+            name='ownerId'
+            initialValue={data.ownerId}
+          >
+            <Select style={{ width: 150 }}>
+              {allUsers.map(el => {
+                return <Option value={el._id}>{el.username}</Option>;
+              })}
+            </Select>
+          </Form.Item>
 
-            <FormGroup>
-              <ControlLabel>Хүний хэмжээ</ControlLabel>
-              <FormControl name='slotSize' value={data.slotSize} />
-            </FormGroup>
+          <Form.Item label='Нэр' name='name' initialValue={data.name}>
+            <Input required />
+          </Form.Item>
 
-            <FormGroup>
-              <ControlLabel>Зураг</ControlLabel>
-              <FormControl name='image' value={data.image} />
-            </FormGroup>
-            <FormGroup>
-              <ControlLabel>Анхааруулга</ControlLabel>
-              <FormControl name='warning' value={data.warning} />
-            </FormGroup>
-            <FormGroup>
-              <ControlLabel>Уртраг</ControlLabel>
-              <FormControl name='lat' value={data.lat} type='number' />
-            </FormGroup>
-            <FormGroup>
-              <ControlLabel>Өргөрөг</ControlLabel>
-              <FormControl name='lng' value={data.lng} type='number' />
-            </FormGroup>
-            <FormGroup>
-              <ControlLabel>Зогсоол</ControlLabel>
-              <FormControl name='parking' value={data.parking} />
-            </FormGroup>
+          <Form.Item
+            label='Хүний хэмжээ'
+            name='slotSize'
+            initialValue={data.slotSize}
+          >
+            <InputNumber />
+          </Form.Item>
 
-            <FormGroup>
-              <ControlLabel>Дэлгэрэнгүй</ControlLabel>
-              <FormControl name='courtDetail' value={data.courtDetail} />
-            </FormGroup>
+          <Form.Item label='Зураг' name='image' initialValue={data.image}>
+            <Input />
+          </Form.Item>
 
-            <FormGroup>
-              <ControlLabel>Тайлбар</ControlLabel>
-              <FormControl
-                name='description'
-                value={data.description}
-                rows={3}
-                componentClass='textarea'
-              />
-            </FormGroup>
-          </Form>
+          <Form.Item
+            label='Анхааруулга'
+            name='warning'
+            initialValue={data.warning}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item label='Уртраг' name='lat' initialValue={data.lat}>
+            <InputNumber />
+          </Form.Item>
+
+          <Form.Item label='Өргөрөг' name='lng' initialValue={data.lng}>
+            <InputNumber />
+          </Form.Item>
+
+          <Form.Item label='Зогсоол' name='parking' initialValue={data.parking}>
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            label='Дэлгэрэнгүй'
+            name='courtDetail'
+            initialValue={data.courtDetail}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            label='Тайлбар'
+            name='description'
+            initialValue={data.description}
+          >
+            <Input.TextArea />
+          </Form.Item>
+
+          <Form.Item>
+            <Button type='primary' htmlType='submit'>
+              Оруулах
+            </Button>
+          </Form.Item>
         </Form>
       </Modal>
     </>
