@@ -27,7 +27,7 @@ const titleStyle = {
 const CourtRow = props => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const { court, remove, history } = props;
+  const { court, remove, history, currentUser } = props;
 
   const item = court;
 
@@ -89,24 +89,26 @@ const CourtRow = props => {
             {<CourtForm court={court} btnTxt={'Засах'} />}
           </div>
         </FlexboxGrid.Item>
-        <FlexboxGrid.Item
-          colspan={4}
-          style={{
-            ...styleCenter
-          }}
-        >
-          <Button type='primary' onClick={showModal}>
-            Устгах
-          </Button>
-          <Modal
-            title='Заал устгах'
-            visible={isModalVisible}
-            onOk={handleOk}
-            onCancel={handleCancel}
+        {currentUser?.role === 'admin' ? (
+          <FlexboxGrid.Item
+            colspan={4}
+            style={{
+              ...styleCenter
+            }}
           >
-            <p>Устгахдаа итгэлтэй байна уу?</p>
-          </Modal>
-        </FlexboxGrid.Item>
+            <Button type='primary' onClick={showModal}>
+              Устгах
+            </Button>
+            <Modal
+              title='Заал устгах'
+              visible={isModalVisible}
+              onOk={handleOk}
+              onCancel={handleCancel}
+            >
+              <p>Устгахдаа итгэлтэй байна уу?</p>
+            </Modal>
+          </FlexboxGrid.Item>
+        ) : null}
       </FlexboxGrid>
     </List.Item>
   );

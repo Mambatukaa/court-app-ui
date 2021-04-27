@@ -22,6 +22,7 @@ function Courts(props) {
             remove={remove}
             loading={props.loading}
             history={history}
+            currentUser={currentUser}
           />
         );
       })}
