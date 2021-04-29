@@ -17,8 +17,8 @@ function Courts(props) {
       {allCourts.map((item, index) => {
         return (
           <CourtRow
+            key={index}
             court={item}
-            index={index}
             remove={remove}
             loading={props.loading}
             history={history}

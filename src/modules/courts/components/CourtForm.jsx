@@ -84,8 +84,12 @@ const CourtForm = props => {
               initialValue={data.ownerId}
             >
               <Select style={{ width: 150 }}>
-                {allUsers.map(el => {
-                  return <Option value={el._id}>{el.username}</Option>;
+                {allUsers.map((el, index) => {
+                  return (
+                    <Option key={index} value={el._id}>
+                      {el.username}
+                    </Option>
+                  );
                 })}
               </Select>
             </Form.Item>

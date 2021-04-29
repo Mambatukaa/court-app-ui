@@ -42,7 +42,7 @@ const CourtDetail = props => {
               }}
             >
               <List.Item.Meta
-                title={<h6>{dayjs(item.day).format('YYYY-MM-DD')}</h6>}
+                title={<p>{dayjs(item.day).format('YYYY-MM-DD')}</p>}
                 description={`${dayjs(item.startTime).format(
                   'HH:mm'
                 )} ==> ${dayjs(item.endTime).format('HH:mm')}\n ${item.price}₮`}

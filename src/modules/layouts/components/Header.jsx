@@ -25,7 +25,7 @@ const NavBarInstance = ({ onSelect, activeKey, ...props }) => {
               to='/sign-in'
               icon={<Icon icon='sign-out' />}
             >
-              <Link style={{ color: 'white' }} onClick={logout}>
+              <Link to='/' style={{ color: 'white' }} onClick={logout}>
                 Гарах
               </Link>
             </Nav.Item>
