@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 
 import { Courts, CourtDetail } from './containers';
 
-const details = ({ match, locatio }) => {
+const details = ({ match, location }) => {
   const id = match.params.id;
 
   return (

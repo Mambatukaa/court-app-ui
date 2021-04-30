@@ -8,15 +8,22 @@ const NavBarInstance = ({ onSelect, activeKey, ...props }) => {
   return (
     <Navbar {...props}>
       <Navbar.Body>
-        {currentUser ? (
-          <Nav onSelect={onSelect} activeKey={activeKey}>
-            <Nav.Item icon={<Icon icon='home' />}>
+        <Nav onSelect={onSelect} activeKey={activeKey}>
+          {currentUser ? (
+            <Nav.Item icon={<Icon icon='star' />}>
               <Link style={{ color: 'white' }} to='/'>
                 Заал
               </Link>
             </Nav.Item>
-          </Nav>
-        ) : null}
+          ) : null}
+          {currentUser?.role === 'admin' ? (
+            <Nav.Item icon={<Icon icon='user' />}>
+              <Link to='/users' style={{ color: 'white' }}>
+                Хэрэглэгчид
+              </Link>
+            </Nav.Item>
+          ) : null}
+        </Nav>
 
         <Nav pullRight>
           {currentUser ? (
