@@ -32,8 +32,8 @@ function SignUp(props) {
         </FormGroup>
 
         <FormGroup>
-          <ControlLabel>Имэйл</ControlLabel>
-          <FormControl name='email' placeholder='Имэйл' />
+          <ControlLabel>Мэйл</ControlLabel>
+          <FormControl name='email' placeholder='Мэйл' />
         </FormGroup>
 
         <FormGroup>

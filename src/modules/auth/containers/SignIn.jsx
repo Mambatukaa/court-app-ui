@@ -10,10 +10,9 @@ function SignInContainer(props) {
   const { loginMutation, history } = props;
 
   function login(variables) {
-    setLoading(true);
-
     loginMutation({ variables })
       .then(() => {
+        setLoading(true);
         alert.success('Амжилттай нэвтэрлээ');
         history.push('/');
       })
