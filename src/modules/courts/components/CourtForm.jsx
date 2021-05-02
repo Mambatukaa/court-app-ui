@@ -120,11 +120,11 @@ const CourtForm = props => {
           </Form.Item>
 
           <Form.Item label='Уртраг' name='lat' initialValue={data.lat}>
-            <InputNumber />
+            <Input />
           </Form.Item>
 
           <Form.Item label='Өргөрөг' name='lng' initialValue={data.lng}>
-            <InputNumber />
+            <Input />
           </Form.Item>
 
           <Form.Item label='Зогсоол' name='parking' initialValue={data.parking}>
