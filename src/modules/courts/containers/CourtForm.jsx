@@ -22,17 +22,15 @@ const CourtFormContainer = props => {
   const currentUser = currentUserQuery.currentUser || {};
 
   const addCourt = variables => {
-    setLoading(true);
-
     addCourtMutation({ variables })
       .then(() => {
+        setLoading(true);
         alert.success('Амжилттай');
-        setLoading(false);
       })
       .catch(e => {
         alert.error(e);
-        setLoading(false);
       });
+    setLoading(false);
   };
 
   const editCourt = (_id, variables) => {
@@ -40,13 +38,13 @@ const CourtFormContainer = props => {
 
     courtEditMutation({ _id, variables })
       .then(() => {
+        setLoading(true);
         alert.success('Амжилттай засагдлаа');
-        setLoading(false);
       })
       .catch(e => {
         alert.error(e);
-        setLoading(false);
       });
+    setLoading(false);
   };
 
   if (usersQuery.loading) {

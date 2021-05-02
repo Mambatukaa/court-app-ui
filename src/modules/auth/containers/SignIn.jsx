@@ -19,8 +19,8 @@ function SignInContainer(props) {
       })
       .catch(e => {
         alert.error(e);
-        setLoading(false);
       });
+    setLoading(false);
   }
 
   const updatedProps = {

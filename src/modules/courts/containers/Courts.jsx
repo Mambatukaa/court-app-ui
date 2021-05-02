@@ -23,8 +23,8 @@ function CourtContainer(props) {
       })
       .catch(e => {
         alert.error(e);
-        setLoading(false);
       });
+    setLoading(false);
   };
 
   const allCourts = allCourtsQuery.courts || [];

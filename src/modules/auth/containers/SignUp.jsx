@@ -13,14 +13,14 @@ function SignUpContainer(props) {
 
     signUpMutation({ variables })
       .then(() => {
+        setLoading(true);
         alert.success('Бүртгэл амжилттай');
-        setLoading(false);
         history.push('/sign-in');
       })
       .catch(e => {
         alert.error(e);
-        setLoading(false);
       });
+    setLoading(false);
   };
 
   const updatedProps = {
