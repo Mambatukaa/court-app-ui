@@ -36,7 +36,26 @@ const CourtFormContainer = props => {
   const editCourt = (_id, variables) => {
     setLoading(true);
 
-    courtEditMutation({ _id, variables })
+    courtEditMutation({
+      variables: {
+        _id,
+        name: variables.name,
+        image: variables.image,
+
+        description: variables.description,
+        slotSize: variables.slotSize,
+
+        warning: variables.warning,
+        parking: variables.parking,
+
+        courtDetail: variables.courtDetail,
+
+        lat: variables.lat,
+        lng: variables.lng,
+
+        ownerId: variables.ownerId
+      }
+    })
       .then(() => {
         setLoading(true);
         alert.success('Амжилттай засагдлаа');

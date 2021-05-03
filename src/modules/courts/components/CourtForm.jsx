@@ -17,8 +17,8 @@ const CourtForm = props => {
     warning: court.warning || '',
     parking: court.parking || '',
     courtDetail: court.courtDetail || '',
-    lat: '',
-    lng: ''
+    lat: court.location?.lat || '',
+    lng: court.location?.lng || ''
   });
 
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -29,24 +29,16 @@ const CourtForm = props => {
     setIsModalVisible(true);
   };
 
-  const handleOk = e => {
-    e.preventDefault();
-
-    addCourt(data);
-
-    setIsModalVisible(false);
-  };
-
   const handleCancel = () => {
     setIsModalVisible(false);
   };
 
-  /* const onEdit = values => {
-    editCourt(court._id, values);
-  }; */
-
   const onFinish = values => {
-    addCourt(values);
+    if (court.name) {
+      editCourt(court._id, values);
+    } else {
+      addCourt(values);
+    }
 
     setIsModalVisible(false);
   };
@@ -60,10 +52,9 @@ const CourtForm = props => {
       <Modal
         title='Заал нэмэх'
         visible={isModalVisible}
-        onOk={handleOk}
+        onOk={form.submit}
         onCancel={handleCancel}
         width={800}
-        footer={false}
       >
         <Form
           form={form}
@@ -145,12 +136,6 @@ const CourtForm = props => {
             initialValue={data.description}
           >
             <Input.TextArea />
-          </Form.Item>
-
-          <Form.Item>
-            <Button type='primary' htmlType='submit'>
-              Оруулах
-            </Button>
           </Form.Item>
         </Form>
       </Modal>

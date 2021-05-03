@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Button } from 'antd';
 import { List, FlexboxGrid, Icon } from 'rsuite';
-import CourtForm from './CourtForm';
-import CourtScheduleForm from './CourtScheduleForm';
+import CourtForm from '../containers/CourtForm';
 
 const styleCenter = {
   display: 'flex',
