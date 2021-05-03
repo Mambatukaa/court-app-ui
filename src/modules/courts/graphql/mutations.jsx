@@ -75,7 +75,6 @@ const removeCourt = `
 
 const scheduleParamsDef = `
     $courtId: String!
-    $day: Date!
     $startTime: Date!
     $endTime: Date!
     $price: String
@@ -83,7 +82,6 @@ const scheduleParamsDef = `
 
 const scheduleParamsVal = `
     courtId: $courtId
-    day: $day
     startTime: $startTime
     endTime: $endTime
     price: $price

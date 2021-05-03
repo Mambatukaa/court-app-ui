@@ -16,7 +16,6 @@ const courtFields = `
 
     courtSchedule {
       _id
-      day
       courtId
       startTime
       endTime
