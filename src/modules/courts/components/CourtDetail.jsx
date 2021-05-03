@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { List, Modal, Button } from 'antd';
+import React from 'react';
+import { List, Button } from 'antd';
 import dayjs from 'dayjs';
 
 import CourtScheduleForm from './CourtScheduleForm';
@@ -8,23 +8,10 @@ const CourtDetail = props => {
   const { courtDetail, addSchedule, deleteSchedule } = props;
   const { courtSchedule } = courtDetail;
 
-  /*  const [isModalVisible, setIsModalVisible] = useState(false);
-   */
-  /*  const showModal = () => {
-    setIsModalVisible(true);
-  }; */
-
   const handleOk = item => {
-    console.log(item, 'aaaaaaaaaa');
     deleteSchedule(item);
-
-    /*     setIsModalVisible(false); */
   };
 
-  /*   const handleCancel = () => {
-    setIsModalVisible(false);
-  };
- */
   return (
     <div style={{ margin: 20 }}>
       {<CourtScheduleForm court={courtDetail} addSchedule={addSchedule} />}
@@ -51,16 +38,6 @@ const CourtDetail = props => {
                 <Button type='primary' onClick={() => handleOk(item)}>
                   Устгах
                 </Button>
-                {/* <Modal
-                  title='Цагийн хуваарь устгах'
-                  visible={isModalVisible}
-                  onOk={() => {
-                    console.log('a');
-                  }}
-                  onCancel={handleCancel}
-                >
-                  <p>Устгахдаа итгэлтэй байна уу?</p>
-                </Modal> */}
               </div>
             </List.Item>
           );
