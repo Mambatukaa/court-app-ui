@@ -57,10 +57,6 @@ const CourtSchedule = props => {
           }}
           layout='horizontal'
         >
-          {/*  <Form.Item label='Өдөр' name='day'>
-            <DatePicker picker='day' />
-          </Form.Item> */}
-
           <Form.Item label='Хугацаа' name='date'>
             <RangePicker
               showTime={{ format: 'HH:mm' }}
