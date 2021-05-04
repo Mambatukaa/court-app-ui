@@ -10,7 +10,7 @@ const CourtForm = props => {
 
   const [data, setData] = useState({
     name: court.name || '',
-    ownerId: '',
+    ownerId: court.ownerId || '',
     image: court.image || '',
     slotSize: court.slotSize || 15,
     description: court.description || '',
