@@ -11,7 +11,7 @@ const NavBarInstance = ({ onSelect, activeKey, ...props }) => {
         <Nav onSelect={onSelect} activeKey={activeKey}>
           {currentUser ? (
             <Nav.Item icon={<Icon icon='star' />}>
-              <Link style={{ color: 'white' }} to='/'>
+              <Link style={{ color: 'white' }} to='/courts'>
                 Заал
               </Link>
             </Nav.Item>

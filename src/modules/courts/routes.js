@@ -16,7 +16,7 @@ const details = ({ match, location }) => {
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default [
-  <Route key='home' exact path='/' component={Courts} />,
+  <Route key='home' exact path='/courts' component={Courts} />,
   <Route
     key='/courtDetail'
     exact

@@ -14,7 +14,7 @@ function SignInContainer(props) {
       .then(() => {
         setLoading(true);
         alert.success('Амжилттай нэвтэрлээ');
-        history.push('/');
+        history.push('/courts');
       })
       .catch(e => {
         alert.error(e);
