@@ -77,7 +77,7 @@ const scheduleParamsDef = `
     $courtId: String!
     $startTime: Date!
     $endTime: Date!
-    $price: String
+    $price: Float
 `;
 
 const scheduleParamsVal = `

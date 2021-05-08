@@ -25,7 +25,7 @@ const CourtSchedule = props => {
       day,
       startTime: date[0],
       endTime: date[1],
-      price
+      price: Number(price)
     });
 
     setIsModalVisible(false);
