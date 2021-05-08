@@ -12,7 +12,7 @@ function HeaderContainer(props) {
     logoutMutation()
       .then(() => {
         localStorage.removeItem('locale');
-        window.location.href = '/sign-in';
+        window.location.href = '/';
       })
       .catch(e => {
         console.log(e);
