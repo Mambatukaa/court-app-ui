@@ -13,7 +13,7 @@ const CourtDetail = props => {
   };
 
   return (
-    <div style={{ margin: 20 }}>
+    <div style={{ margin: 20, marginTop: 80 }}>
       {<CourtScheduleForm court={courtDetail} addSchedule={addSchedule} />}
       <List
         itemLayout='horizontal'

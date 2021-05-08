@@ -61,7 +61,10 @@ function Header(props) {
   }
 
   return (
-    <div className='nav-wrapper'>
+    <div
+      className='nav-wrapper'
+      style={{ position: 'fixed', zIndex: 1, width: '100%', top: 0 }}
+    >
       <NavBarInstance
         logout={props.logout}
         currentUser={props.currentUser}

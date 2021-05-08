@@ -8,13 +8,11 @@ import UsersRoutes from './modules/users/routes';
 const Routes = () => (
   <Router>
     <Header />
-    <div>
-      <Switch>
-        {AuthRoutes}
-        {CourtsRoutes}
-        {UsersRoutes}
-      </Switch>
-    </div>
+    <Switch>
+      {AuthRoutes}
+      {CourtsRoutes}
+      {UsersRoutes}
+    </Switch>
   </Router>
 );
 

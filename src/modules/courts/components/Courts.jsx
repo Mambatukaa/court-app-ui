@@ -8,7 +8,7 @@ function Courts(props) {
   const { allCourts, currentUser, remove, history } = props;
 
   return (
-    <List hover>
+    <List hover style={{ marginTop: 50 }}>
       {currentUser && currentUser.role === 'admin' ? (
         <div style={{ textAlign: 'right', margin: 20 }}>
           {<CourtForm btnTxt='Заал нэмэх' />}

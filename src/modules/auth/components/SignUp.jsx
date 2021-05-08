@@ -24,7 +24,12 @@ function SignUp(props) {
   };
 
   return (
-    <div style={{ textAlign: 'center', margin: 20 }}>
+    <div
+      style={{
+        textAlign: 'center',
+        marginTop: 80
+      }}
+    >
       <Form formValue={formValue} onChange={setFormValue}>
         <FormGroup>
           <ControlLabel>Нэвтрэх нэр</ControlLabel>

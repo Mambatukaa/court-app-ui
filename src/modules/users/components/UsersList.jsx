@@ -11,7 +11,9 @@ const UsersList = props => {
   };
 
   return (
-    <div style={{ margin: 10, border: 'solid', borderWidth: 0.2 }}>
+    <div
+      style={{ margin: 10, marginTop: 80, border: 'solid', borderWidth: 0.2 }}
+    >
       <List style={{ padding: 5 }}>
         {allUsers.map((user, index) => {
           return (
