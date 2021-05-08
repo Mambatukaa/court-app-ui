@@ -27,11 +27,7 @@ const NavBarInstance = ({ onSelect, activeKey, ...props }) => {
 
         <Nav pullRight>
           {currentUser ? (
-            <Nav.Item
-              eventKey='logOut'
-              to='/sign-in'
-              icon={<Icon icon='sign-out' />}
-            >
+            <Nav.Item eventKey='logOut' icon={<Icon icon='sign-out' />}>
               <Link to='/' style={{ color: 'white' }} onClick={logout}>
                 Гарах
               </Link>
