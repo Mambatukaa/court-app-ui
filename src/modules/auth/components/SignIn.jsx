@@ -1,3 +1,4 @@
+import { currentUser } from 'erxes-ui/lib/auth/graphql';
 import React, { useState } from 'react';
 import {
   FormGroup,
@@ -9,7 +10,7 @@ import {
 } from 'rsuite';
 
 function SignIn(props) {
-  const { loading, login, history } = props;
+  const { loading, login, history, currentUser } = props;
   const [formValue, setFormValue] = useState({
     input: '',
     password: ''
@@ -19,6 +20,10 @@ function SignIn(props) {
     e.preventDefault();
 
     login(formValue);
+  }
+
+  if (currentUser.username) {
+    history.push('/courts');
   }
 
   return (
