@@ -18,9 +18,6 @@ const courtFields = `
 const currentUserFields = `
       _id
       username
-      email
-      phone
-      role
 `;
 
 const allCourts = `

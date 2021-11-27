@@ -12,7 +12,7 @@ function CourtContainer(props) {
   const { allCourtsQuery, currentUserQuery, removeCourtMutation } = props;
 
   if (allCourtsQuery.loading || currentUserQuery.loading) {
-    return <Loader backdrop content='loading...' vertical />;
+    return <Loader backdrop content="loading..." vertical />;
   }
 
   const remove = courtId => {
@@ -27,7 +27,7 @@ function CourtContainer(props) {
     setLoading(false);
   };
 
-  const allCourts = allCourtsQuery.courts || [];
+  const allCourts = allCourtsQuery.courtsMain || [];
 
   const currentUser = currentUserQuery.currentUser || {};
 

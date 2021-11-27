@@ -23,8 +23,8 @@ const CourtSchedule = props => {
     addSchedule({
       courtId: court._id,
       day,
-      startTime: date[0],
-      endTime: date[1],
+      startDate: date[0],
+      endDate: date[1],
       price: Number(price)
     });
 
@@ -35,11 +35,11 @@ const CourtSchedule = props => {
 
   return (
     <>
-      <Button type='primary' icon={<PlusCircleOutlined />} onClick={showModal}>
+      <Button type="primary" icon={<PlusCircleOutlined />} onClick={showModal}>
         Цагийн хуваарь нэмэх
       </Button>
       <Modal
-        title='Цагийн хуваарь'
+        title="Цагийн хуваарь"
         visible={isModalVisible}
         onCancel={handleCancel}
         width={800}
@@ -47,7 +47,7 @@ const CourtSchedule = props => {
       >
         <Form
           form={form}
-          name='control-hooks'
+          name="control-hooks"
           onFinish={onFinish}
           labelCol={{
             span: 4
@@ -55,17 +55,17 @@ const CourtSchedule = props => {
           wrapperCol={{
             span: 14
           }}
-          layout='horizontal'
+          layout="horizontal"
         >
-          <Form.Item label='Хугацаа' name='date'>
+          <Form.Item label="Хугацаа" name="date">
             <RangePicker
               showTime={{ format: 'HH:mm' }}
-              format='YYYY-MM-DD HH:mm'
+              format="YYYY-MM-DD HH:mm"
             />
           </Form.Item>
 
-          <Form.Item label='Үнэ' name='price'>
-            <Input type='number' style={{ width: 134 }} />
+          <Form.Item label="Үнэ" name="price">
+            <Input type="number" style={{ width: 134 }} />
           </Form.Item>
         </Form>
       </Modal>

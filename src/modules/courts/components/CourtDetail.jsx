@@ -16,7 +16,7 @@ const CourtDetail = props => {
     <div style={{ margin: 20, marginTop: 80 }}>
       {<CourtScheduleForm court={courtDetail} addSchedule={addSchedule} />}
       <List
-        itemLayout='horizontal'
+        itemLayout="horizontal"
         dataSource={courtSchedule}
         renderItem={item => {
           return (
@@ -35,7 +35,7 @@ const CourtDetail = props => {
                 )} ==> ${dayjs(item.endTime).format('HH:mm')}\n ${item.price}₮`}
               />
               <div>
-                <Button type='primary' onClick={() => handleOk(item)}>
+                <Button type="primary" onClick={() => handleOk(item)}>
                   Устгах
                 </Button>
               </div>

@@ -9,8 +9,8 @@ const withCurrentUser = Component => {
 
     if (currentUserQuery.loading) {
       return (
-        <div id='loaderInverseWrapper' style={{ height: 200 }}>
-          <Loader inverse center content='loading...' />
+        <div id="loaderInverseWrapper" style={{ height: 200 }}>
+          <Loader inverse center content="loading..." />
         </div>
       );
     }

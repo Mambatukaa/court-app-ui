@@ -1,6 +1,6 @@
 const login = `
-    mutation login($input: String! $password: String!){
-        login(input: $input password: $password){
+    mutation login($email: String! $password: String!){
+        login(email: $email password: $password){
             token
             refreshToken
         }
@@ -8,8 +8,8 @@ const login = `
 `;
 
 const signUp = `
-    mutation userCreate($username: String! $email: String! $password: String!){
-        userCreate(username: $username email: $email password: $password){
+    mutation usersCreate($username: String! $email: String! $password: String!){
+        usersCreate(username: $username email: $email password: $password){
             _id
             username
             email

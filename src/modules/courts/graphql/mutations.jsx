@@ -1,89 +1,63 @@
-const courtFields = `
-    _id
-
-    name
-    image
-    slotSize
-    description
-
-    warning
-    parking
-    courtDetail
-
-    ownerId
-
-`;
-
 const courtParamsDef = `
     $name: String
-    $image: String
+    $featuredImage: String
 
     $description: String
-    $slotSize: Float
 
     $warning: String
     $parking: String
-    $courtDetail: String
 
-    $lat: String
-    $lng: String
+    $location: LocationInput 
 
     $ownerId: String
-
 `;
 
 const courtParamsVal = `
     name: $name
-    image: $image
-
+    featuredImage: $featuredImage
     description: $description
-    slotSize: $slotSize
 
     warning: $warning
     parking: $parking
 
-    courtDetail: $courtDetail
-
-    lat: $lat
-    lng: $lng
+    location: $location
 
     ownerId: $ownerId
-
 `;
 
-const addCourt = `
+const courtsAdd = `
     mutation courtsAdd(${courtParamsDef}){
         courtsAdd(${courtParamsVal}){
-            ${courtFields}
+            _id
         }
     }
 `;
 
 const courtEdit = `
-    mutation courtEdit( $_id: String! ${courtParamsDef}){
-        courtEdit( _id: $_id ${courtParamsVal}){
-            ${courtFields}
+    mutation courtsEdit( $_id: String! ${courtParamsDef}){
+        courtsEdit( _id: $_id ${courtParamsVal}){
+            _id
         }
     }
 `;
 
 const removeCourt = `
-    mutation removeCourt($_id: String!){
-        removeCourt(_id: $_id)
+    mutation courtsRemove($_id: String!){
+        courtsRemove(_id: $_id)
     }
 `;
 
 const scheduleParamsDef = `
     $courtId: String!
-    $startTime: Date!
-    $endTime: Date!
-    $price: Float
+    $startDate: Date!
+    $endDate: Date!
+    $price: Int
 `;
 
 const scheduleParamsVal = `
     courtId: $courtId
-    startTime: $startTime
-    endTime: $endTime
+    startDate: $startDate
+    endDate: $endDate
     price: $price
 `;
 
@@ -92,8 +66,8 @@ const schedulesAdd = `
         schedulesAdd(${scheduleParamsVal}){
             _id
             courtId
-            startTime
-            endTime
+            startDate
+            endDate
             price
         }
     }
@@ -107,7 +81,7 @@ const schedulesDelete = `
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  addCourt,
+  courtsAdd,
   removeCourt,
   courtEdit,
   schedulesAdd,

@@ -1,4 +1,3 @@
-import { currentUser } from 'erxes-ui/lib/auth/graphql';
 import React, { useState } from 'react';
 import {
   FormGroup,
@@ -12,7 +11,7 @@ import {
 function SignIn(props) {
   const { loading, login, history, currentUser } = props;
   const [formValue, setFormValue] = useState({
-    input: '',
+    email: '',
     password: ''
   });
 
@@ -30,32 +29,32 @@ function SignIn(props) {
     <div style={{ textAlign: 'center', marginTop: 80 }}>
       <Form formValue={formValue} onChange={setFormValue}>
         <FormGroup>
-          <ControlLabel>Нэвтрэх нэр</ControlLabel>
-          <FormControl name='input' placeholder='Нэвтрэх нэр' />
+          <ControlLabel>Имэйл хаяг</ControlLabel>
+          <FormControl name="email" placeholder="Email" />
         </FormGroup>
 
         <FormGroup>
           <ControlLabel>Нууц үг</ControlLabel>
           <FormControl
-            name='password'
-            type='password'
+            name="password"
+            type="password"
             res
-            placeholder='Нууц үг'
+            placeholder="Нууц үг"
           />
         </FormGroup>
         <ButtonToolbar>
           <Button
-            appearance='primary'
-            type='submit'
+            appearance="primary"
+            type="submit"
             loading={loading}
             onClick={loginHandle}
           >
             Нэвтрэх
           </Button>
           <Button
-            appearance='primary'
-            type='submit'
-            color='red'
+            appearance="primary"
+            type="submit"
+            color="red"
             onClick={() => history.push('/sign-up')}
           >
             Бүртгүүлэх

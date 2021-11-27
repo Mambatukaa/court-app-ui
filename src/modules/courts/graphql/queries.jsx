@@ -1,33 +1,33 @@
 const courtFields = `
     _id
-    createdAt
     name
     description
-    slotSize
-    warning
-    parking
-    courtDetail
-    image 
-    location {
-        lat
-        lng
-      }
-    ownerId
 
-    courtSchedule {
-      _id
-      courtId
-      startTime
-      endTime
-      price
-      bookedPeople
+    featuredImage
+    parking
+    ownerId
+    warning
+    surface
+    format
+
+    location {
+      latitude
+      longitude
     }
     
+    secondaryImages
+
+    courtSchedule {
+      startDate
+      endDate
+      price
+      courtId
+    }
 `;
 
 const allCourts = `
-  query courts{
-    courts{
+  query courtsMain{
+    courtsMain{
         ${courtFields}
     }
 }
@@ -38,9 +38,7 @@ const users = `
     allUsers{
       _id
       username
-      email
       role
-      phone
     }
   }
 `;

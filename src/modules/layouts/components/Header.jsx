@@ -10,15 +10,15 @@ const NavBarInstance = ({ onSelect, activeKey, ...props }) => {
       <Navbar.Body>
         <Nav onSelect={onSelect} activeKey={activeKey}>
           {currentUser ? (
-            <Nav.Item icon={<Icon icon='star' />}>
-              <Link style={{ color: 'white' }} to='/courts'>
+            <Nav.Item icon={<Icon icon="star" />}>
+              <Link style={{ color: 'white' }} to="/courts">
                 Заал
               </Link>
             </Nav.Item>
           ) : null}
           {currentUser?.role === 'admin' ? (
-            <Nav.Item icon={<Icon icon='user' />}>
-              <Link to='/users' style={{ color: 'white' }}>
+            <Nav.Item icon={<Icon icon="user" />}>
+              <Link to="/users" style={{ color: 'white' }}>
                 Хэрэглэгчид
               </Link>
             </Nav.Item>
@@ -27,18 +27,18 @@ const NavBarInstance = ({ onSelect, activeKey, ...props }) => {
 
         <Nav pullRight>
           {currentUser ? (
-            <Nav.Item eventKey='logOut' icon={<Icon icon='sign-out' />}>
-              <Link to='#sign-out' style={{ color: 'white' }} onClick={logout}>
+            <Nav.Item eventKey="logOut" icon={<Icon icon="sign-out" />}>
+              <Link to="#sign-out" style={{ color: 'white' }} onClick={logout}>
                 Гарах
               </Link>
             </Nav.Item>
           ) : (
             <Nav.Item
-              eventKey='logIn'
-              to='/sign-in'
-              icon={<Icon icon='sign-out' />}
+              eventKey="logIn"
+              to="/sign-in"
+              icon={<Icon icon="sign-out" />}
             >
-              <Link to='/' style={{ color: 'white' }}>
+              <Link to="/" style={{ color: 'white' }}>
                 Нэвтрэх
               </Link>
             </Nav.Item>
@@ -58,13 +58,13 @@ function Header(props) {
 
   return (
     <div
-      className='nav-wrapper'
+      className="nav-wrapper"
       style={{ position: 'fixed', zIndex: 1, width: '100%', top: 0 }}
     >
       <NavBarInstance
         logout={props.logout}
         currentUser={props.currentUser}
-        appearance='inverse'
+        appearance="inverse"
         activeKey={activeKey}
         onSelect={handleSelect}
       />
